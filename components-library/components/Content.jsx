@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 
@@ -30,12 +30,15 @@ const NavControl = styled.div`
 `
 
 const Container = styled.div`
+  margin-left: calc( var(--nav-width) + 2vw);
   background-color: var(--content-bg-color);
   padding: 20px 30px;
   min-height: 80vh;
   width: 100%;
   border-radius: 30px;
   box-shadow: 0px 0px 17px 3px rgba(0,0,0,0.43);
+  transition: all var(--transition-duration) var(--transition-type);
+  &.expand { margin-left: 0; }
 `;
 
 const Title = styled.div`
@@ -71,7 +74,7 @@ const Example = styled.div`
 const Content = ({ handleToggleNav, isNavActive }) => {
 
     return (
-        <Container>
+        <Container className={isNavActive ? 'expand' : ''}>
             <NavControl>
                 <button onClick={handleToggleNav}>
                     <FontAwesomeIcon icon={faChevronLeft} className={isNavActive ? 'close' : ''}/>
